@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
-  },
+    "test": "react-scripts test --passWithNoTests"
+},
   "dependencies": {
     "@azure/identity": "^4.2.0",
     "@azure/keyvault-secrets": "^4.8.0",
