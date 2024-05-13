@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js project to Azure Function App - v3-analyze-and-generate-images-function
+name: Build and deploy Node.js project to Azure Function App - v3-v4-analyze-and-generate-images-function
 
 on:
   push:
@@ -58,15 +58,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_90849866A83747A7AE3E9B9D39717FC5 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B884AA16A7044BA1B13055CF0064CE14 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4C29D7ADBB9848728367E818D88551B4 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FFE65E910F044A32AAA816D57BE6EF28 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CAC5704E0C5E4E5BA7F55A88BF9706B4 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_08EAFAE64B6B466FB00BC3CEFACD2F6E }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         id: fa
         with:
-          app-name: 'v3-analyze-and-generate-images-function'
+          app-name: 'v3-v4-analyze-and-generate-images-function'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           
