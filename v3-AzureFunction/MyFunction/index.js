@@ -5,13 +5,14 @@ const { SecretClient } = require('@azure/keyvault-secrets');
 module.exports = async function (context, req) {
     const credential = new DefaultAzureCredential();
 
-    const apiKeySecretUri = process.env['API_KEY_SECRET_URI']; // Replace with your environment variable
-    const clientKey = new SecretClient(apiKeySecretUri, credential);
-    const apiKey = await clientKey.getSecret(apiKeySecretUri);
+    const vaultUrl = process.env['VAULT_URL']; // Replace with your environment variable
+    const apiKeySecretName = process.env['API_KEY_SECRET_NAME']; // Replace with your environment variable
+    const clientKey = new SecretClient(vaultUrl, credential);
+    const apiKey = await clientKey.getSecret(apiKeySecretName);
 
-    const endpointSecretUri = process.env['ENDPOINT_SECRET_URI']; // Replace with your environment variable
-    const clientEndpoint = new SecretClient(endpointSecretUri, credential);
-    const endpoint = await clientEndpoint.getSecret(endpointSecretUri);
+    const endpointSecretName = process.env['ENDPOINT_SECRET_NAME']; // Replace with your environment variable
+    const clientEndpoint = new SecretClient(vaultUrl, credential);
+    const endpoint = await clientEndpoint.getSecret(endpointSecretName);
 
     console.log(`API Key: ${apiKey.value}`);
     console.log(`Endpoint: ${endpoint.value}`);
@@ -20,7 +21,7 @@ module.exports = async function (context, req) {
     const imageUrl = req.body && req.body.url;
     if (imageUrl) {
         try {
-            const response = await axios.post(`${endpoint.value}/computervision/imageanalysis:analyze?api-version=2024-02-01&features=caption&model-version=latest&language=en&gender-neutral-caption=False`, 
+            const response = await axios.post(`${endpoint.value}/computervision/imageanalysis:analyze?api-version=2024-02-01&features=caption&language=en&gender-neutral-caption=False`, 
                 { url: imageUrl },
                 {
                     headers: {
@@ -30,22 +31,27 @@ module.exports = async function (context, req) {
                 }
             );
 
-            context.res = {
-                // status: 200, /* Defaults to 200 */
-                body: response.data.description.captions[0].text
-            };
+            console.error('API response:', response);
+            console.error('API response:', response.data);
+        
+            if (response.data.captionResult && response.data.captionResult.text) {
+                context.res = {
+                    // status: 200, /* Defaults to 200 */
+                    body: response.data.captionResult.text
+                };
+            } else {
+                console.error('API response:', response.data);
+                context.res = {
+                    status: 500,
+                    body: "The API response doesn't include a caption."
+                };
+            }
         } catch (error) {
             console.error(error);
             context.res = {
                 status: 500,
                 body: "An error occurred. Check the function logs for details."
             };
-        }
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a url in the request body"
         };
     }
 };
