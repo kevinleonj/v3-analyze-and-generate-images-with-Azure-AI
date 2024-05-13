@@ -6,7 +6,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('https://v3-v4-analyze-and-generate-images-function.azurewebsites.net/api/MyFunction', {
+    const response = await fetch('https://v3-v4-analyze-and-generate-images-function.azurewebsites.net/api/MyFunction?code=magAszZLBg6CfBUt3EOaBcfg__YLU94sKLvKDIPmXFfkAzFuA9lsUw%3D%3D', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
