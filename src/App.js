@@ -6,7 +6,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('api/MyFunction', {
+    const response = await fetch('.api/MyFunction', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
