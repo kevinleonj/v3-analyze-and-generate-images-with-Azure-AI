@@ -6,6 +6,7 @@
   "waitFor": "onCreateCommand",
   "updateContentCommand": "npm install",
   "postCreateCommand": "npm install axios",
+  "postCreatedCommand": "npm install -g azure-functions-core-tools@4 --unsafe-perm true",
   "postAttachCommand": {
     "server": "npm start"
   },
