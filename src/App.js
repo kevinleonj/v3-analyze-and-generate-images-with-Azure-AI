@@ -21,7 +21,7 @@ function App() {
 
   const handleGenerateSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('https://v1-openai-calll.azurewebsites.net', {
+    const response = await fetch('https://v1-openai-calll.azurewebsites.net/api/src?code=-G-w7LVHD3m81jiA09cFf7H66RfhzwP3FFIR1VJ9Dq-3AzFuuebRFw%3D%3D', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,9 @@ function App() {
       body: JSON.stringify({ prompt }),
     });
     const data = await response.json();
-    setImageUrl(data.url);
+    if (Array.isArray(data) && data.length > 0) {
+      setImageUrl(data[0]);
+    }
   };
 
   return (
