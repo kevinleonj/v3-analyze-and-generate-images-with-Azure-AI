@@ -2,7 +2,7 @@ const axios = require('axios');
 const { DefaultAzureCredential } = require('@azure/identity');
 const { SecretClient } = require('@azure/keyvault-secrets');
 
-module.exports = async function (context, req) {
+module.exports = async function computerVisionAPICall(context, req) {
     const credential = new DefaultAzureCredential();
 
     const vaultUrl = process.env['VAULT_URL']; // Replace with your environment variable

@@ -7,3 +7,4 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsof
     && apt-get install -y powershell
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN npm install -g azure-functions-core-tools@4 --unsafe-perm true
