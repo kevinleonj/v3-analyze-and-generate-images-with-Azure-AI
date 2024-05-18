@@ -1,0 +1,34 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "hostRequirements": {
+      "cpus": 4
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "npm install",
+    "postCreateCommand": "npm install axios",
+    "postAttachCommand": {
+      "server": "npm start"
+    },
+    "customizations": {
+      "codespaces": {
+        "openFiles": [
+          "src/App.js"
+        ]
+      }
+    },
+    "portsAttributes": {
+      "3000": {
+        "label": "Application",
+        "onAutoForward": "openPreview"
+      }
+    },
+    "forwardPorts": [3000],
+    "extensions": [
+      "ms-azuretools.vscode-azurefunctions",
+      "ms-azuretools.vscode-docker",
+      "github.copilot",
+      "github.copilot-chat",
+      "ms-vscode.vscode-node-azure-pack",
+      "github.vscode-github-actions"
+    ]
+  }
