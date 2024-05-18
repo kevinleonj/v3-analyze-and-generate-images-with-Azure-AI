@@ -5,3 +5,5 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsof
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \
     && apt-get install -y powershell
+# Install Azure CLI
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
