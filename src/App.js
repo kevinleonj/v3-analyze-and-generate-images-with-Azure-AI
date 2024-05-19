@@ -46,6 +46,7 @@ function App() {
           </label>
           <button type="submit">Describe</button>
         </div>
+        {description && <p>{description}</p>}
       </form>
       <form onSubmit={handleGenerateSubmit}>
         <div style={{textAlign: "center"}}>
@@ -55,6 +56,7 @@ function App() {
           </label>
           <button type="submit">Generate Image</button>
         </div>
+        {imageUrl && <img src={imageUrl} alt="Generated" />}
       </form>
       <h2 style={{textAlign: "center"}}>Instrucciones</h2>
       <p style={{textAlign: "center"}}>
@@ -76,8 +78,6 @@ function App() {
         <br/>
         2. <strong>Image Prompt</strong>: Enter a detailed description of an image you want to create, like "Sweet and funny baby raccoon". The more detailed your instruction, the better the results. After clicking "Generate Image", your instructions are sent to the OpenAI API, which generates an image based on your prompt. This process may take up to 45 seconds. Please be patient and avoid clicking "Generate Image" again until the generated image is returned.
       </p>
-      {description && <p>{description}</p>}
-      {imageUrl && <img src={imageUrl} alt="Generated" />}
     </div>
   );
 }
