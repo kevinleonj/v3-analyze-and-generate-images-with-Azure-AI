@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.css'; // Make sure to import the CSS file
 
 function App() {
   const [url, setUrl] = useState('');
@@ -35,7 +36,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="app">
       <h1 style={{textAlign: "center", fontSize: "2em"}}>Kevin's Azure Project: Computer Vision and OpenAI</h1>
       <form onSubmit={handleDescribeSubmit}>
         <div style={{textAlign: "center"}}>
