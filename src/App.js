@@ -63,10 +63,10 @@ function App() {
         ¡Hola! Este es mi primer proyecto de Azure, así que por favor ten paciencia con cualquier error o lentitud en el rendimiento. Aquí te explico cómo usar la aplicación:
         <br/>
         <br/>
-        1. <strong>Image URL</strong>: Ingresa la URL de una imagen en este cuadro. Al hacer clic en “Describir”, la URL se envía a un servicio de Visión por Computadora de Azure, que devuelve una descripción de la imagen en aproximadamente 5 segundos.
+        1. <strong>Image URL</strong>: Ingresa el URL (link) de una imagen en este cuadro. Al hacer clic en "Describe", la URL se envía a un servicio de Visión por Computadora de Azure, que devuelve una descripción de la imagen en aproximadamente 5 segundos.
         <br/>
         <br/>
-        2. <strong>Image Prompt</strong>:  Ingresa una descripción detallada de una imagen que quieras crear, como “Mapache bebé dulce y divertido”. Cuanto más detallada sea tu instrucción, mejores serán los resultados. Después de hacer clic en “Generate Image”, tus instrucciones se envían a la API de OpenAI, que genera una imagen basada en tus indicaciones. Este proceso puede tardar hasta 45 segundos. Por favor, ten paciencia y evita hacer clic en “Generate Image” nuevamente hasta que se devuelva la imagen generada.
+        2. <strong>Image Prompt</strong>:  Ingresa una descripción detallada de una imagen que quieras crear, como “Mapache bebé dulce y divertido”. Cuanto más detallada sea tu instrucción, mejores serán los resultados. Después de hacer clic en “Generate Image”, tus instrucciones se envían al servicio de OpenAI, que genera una imagen basada en tus indicaciones. Este proceso puede tardar hasta 45 segundos. Por favor, ten paciencia y evita hacer clic en “Generate Image” nuevamente hasta que se muestre la imagen generada.
       </p>
       <h2 style={{textAlign: "center"}}>Instructions</h2>
       <p style={{textAlign: "center"}}>
